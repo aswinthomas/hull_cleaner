@@ -1,6 +1,8 @@
 language: cpp
 compiler: gcc
 
+script: make
+
 #language: cpp
 #compiler:
 #  - gcc
@@ -22,21 +24,32 @@ compiler: gcc
 #  only:
 #    - master
 #    - 1.8.7
-#notifications:
-#  email:
-#    recipients:
-#      - brixen@gmail.com
-#      - d.bussink@gmail.com
-#    on_success: change
-#    on_failure: always
-#  irc:
-#    channels:
-#      - "chat.freenode.net#rubinius"
-#    template:
-#     - "%{repository}/%{branch} (%{commit} - %{author}): %{build_url}: %{message}"
+notifications:
+  email:
+    recipients:
+      - aswinthomas@gmail.com
+    on_success: change
+    on_failure: always
+  irc:
+    channels:
+      - "chat.freenode.net#rubinius"
+    template:
+     - "%{repository}/%{branch} (%{commit} - %{author}): %{build_url}: %{message}"
 #env:
 #  - RVM=2.0.0 LANG="en_US.UTF-8"
 #os:
 #  - linux
 #  - osx
 #osx_image: xcode61
+
+## blacklist
+#branches:
+#  except:
+#    - legacy
+#    - experimental
+
+## whitelist
+#branches:
+#  only:
+#    - master
+#    - stable
