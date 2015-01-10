@@ -1,0 +1,10 @@
+<launch>
+    <param name="sim_speed" value="15" />
+	<node pkg="hull_cleaner" type="boustrophedon" name="boustrophedon_planner" output="screen">
+		<param name="freq" value="10" />
+  	</node>
+  	<node pkg="hull_cleaner" type="robot" name="robot" output="screen">
+  		<remap from="planner/command" to="boustrophedon_planner/command"/>
+		<param name="freq" value="10" />
+  	</node>
+</launch>

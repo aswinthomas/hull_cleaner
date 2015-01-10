@@ -1,0 +1,18 @@
+<package>
+  <description brief="hull_cleaner">
+
+     hull_cleaner
+
+  </description>
+  <author>hope</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/hull_cleaner</url>
+	<depend package="roscpp" />
+	<depend package="geometry_msgs" />
+	<depend package="angles"/>
+<depend package="tf"/>
+	<rosdep name="bullet" />
+</package>
+
+

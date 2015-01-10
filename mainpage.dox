@@ -1,0 +1,10 @@
+/**
+\mainpage
+\htmlinclude manifest.html
+
+\b hull_cleaner
+
+This is a Doxygen generated for a hull cleaning robot that uses the boustrophedon planner
+
+
+*/
