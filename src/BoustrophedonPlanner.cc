@@ -5,7 +5,9 @@
 #include <tf/transform_datatypes.h>
 #include <tf/LinearMath/Matrix3x3.h>
 
-#define PRINT_FREQ 1
+
+
+#define PRINT_FREQ 2
 
 std::string nodeName("[Planner]");
 
