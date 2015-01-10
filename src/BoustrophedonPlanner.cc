@@ -7,7 +7,7 @@
 
 
 
-#define PRINT_FREQ 2
+#define PRINT_FREQ 1
 
 std::string nodeName("[Planner]");
 
