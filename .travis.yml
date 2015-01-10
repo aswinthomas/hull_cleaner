@@ -1,55 +1,24 @@
 language: cpp
 compiler: gcc
 
+before_install: # Use this to prepare the system to install prerequisites or dependencies
+  # Define some config vars
+  - export ROS_DISTRO=indigo
+  - export CI_SOURCE_PATH=$(pwd)
+  - export REPOSITORY_NAME=${PWD##*/}
+  - echo "Testing branch $TRAVIS_BRANCH of $REPOSITORY_NAME"
+  - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'
+  - wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq -y python-catkin-pkg python-rosdep python-wstool ros-$ROS_DISTRO-catkin ros-$ROS_DISTRO-ros
+  # Setup rosdep
+  - sudo rosdep init
+  - rosdep update
+
+#install: # Use this to install any prerequisites or dependencies necessary to run your build
+
+before_script: # Use this to prepare your build for testing e.g. copy database configurations, environment variables, etc.
+  - source /opt/ros/$ROS_DISTRO/setup.bash
+
 script: make
 
-#language: cpp
-#compiler:
-#  - gcc
-#  - clang
-#before_install:
-#  - echo $LANG
-#  - echo $LC_ALL
-#  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update && sudo apt-get install -y llvm-3.4 llvm-3.4-dev; fi
-#  - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install llvm && brew link --force llvm; fi
-#  - rvm use $RVM --install --binary --fuzzy
-#  - gem update --system
-#  - gem --version
-#before_script:
-#  - travis_retry bundle
-#  - if [ $TRAVIS_OS_NAME == linux ]; then travis_retry ./configure --llvm-config llvm-config-3.4; fi
-#  - if [ $TRAVIS_OS_NAME == osx ]; then travis_retry ./configure --llvm-config /usr/local/opt/llvm/bin/llvm-config; fi
-#script: rake
-#branches:
-#  only:
-#    - master
-#    - 1.8.7
-notifications:
-  email:
-    recipients:
-      - aswinthomas@gmail.com
-    on_success: change
-    on_failure: always
-  irc:
-    channels:
-      - "chat.freenode.net#rubinius"
-    template:
-     - "%{repository}/%{branch} (%{commit} - %{author}): %{build_url}: %{message}"
-#env:
-#  - RVM=2.0.0 LANG="en_US.UTF-8"
-#os:
-#  - linux
-#  - osx
-#osx_image: xcode61
-
-## blacklist
-#branches:
-#  except:
-#    - legacy
-#    - experimental
-
-## whitelist
-#branches:
-#  only:
-#    - master
-#    - stable

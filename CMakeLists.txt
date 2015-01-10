@@ -34,4 +34,4 @@ rosbuild_add_executable(boustrophedon src/BoustrophedonPlanner.cc)
 rosbuild_add_executable(robot src/Robot.cc)
 #rosbuild_add_executable(randomPlanner src/RandomPlanner.cc)
 
-rosbuild_add_gtest(test/test_boustrophedon test/testBoustrophedon.cc)
+rosbuild_add_gtest(test_boustrophedon test/testBoustrophedon.cc)
