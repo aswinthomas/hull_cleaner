@@ -23,8 +23,8 @@ before_install: # Use this to prepare the system to install prerequisites or dep
   - echo "Testing branch $TRAVIS_BRANCH of $REPOSITORY_NAME"
   - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
   - wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
-  - sudo apt-get update
-  - sudo apt-get install -y ros-$ROS_DISTRO-ros
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq -y ros-$ROS_DISTRO-ros
   - sudo rosdep init
   - rosdep update
 
@@ -34,6 +34,7 @@ before_script: # Use this to prepare your build for testing e.g. copy database c
   - source /opt/ros/$ROS_DISTRO/setup.bash
   - rospack profile 
   - roscd hull_cleaner
+  - export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:CI_SOURCE_PATH
 
 script: 
   - make
