@@ -8,8 +8,9 @@ machine:
     dev.mycompany.com: 127.0.0.1
   # Add some environment variables
   environment:
-    CIRCLE_ENV: test
-    DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
+    ROS_DISTRO: hydro
+    CI_SOURCE_PATH=$(pwd)
+    REPOSITORY_NAME=${PWD##*/}
 
 ## Customize checkout
 #checkout:
@@ -19,9 +20,6 @@ machine:
 dependencies:
 #  pre:
   override:
-    - export ROS_DISTRO=hydro
-    - export CI_SOURCE_PATH=$(pwd)
-    - export REPOSITORY_NAME=${PWD##*/}
     - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
     - wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
     - sudo apt-get update -qq

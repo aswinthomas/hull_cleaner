@@ -33,8 +33,8 @@ before_install: # Use this to prepare the system to install prerequisites or dep
 before_script: # Use this to prepare your build for testing e.g. copy database configurations, environment variables, etc.
   - source /opt/ros/$ROS_DISTRO/setup.bash
   - rospack profile 
-  - roscd hull_cleaner
   - export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:CI_SOURCE_PATH
+  - roscd hull_cleaner
 
 script: 
   - make
