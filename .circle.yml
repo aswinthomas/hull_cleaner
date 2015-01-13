@@ -1,0 +1,42 @@
+
+## Customize checkout
+#checkout:
+
+
+## Customize dependencies
+dependencies:
+  override:
+    - export ROS_DISTRO=hydro
+    - export CI_SOURCE_PATH=$(pwd)
+    - export REPOSITORY_NAME=${PWD##*/}
+    - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
+    - wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
+    - sudo apt-get update
+    - sudo apt-get install -y ros-$ROS_DISTRO-desktop
+    # Setup rosdep
+    - sudo rosdep init
+    - rosdep update
+
+  # we automatically cache and restore many dependencies between
+  # builds. If you need to, you can add custom paths to cache:
+#  cache_directories:
+
+
+## Customize database setup
+#database:
+
+## Customize test commands
+test:
+  override:
+    - make && make test
+#  post:
+
+
+## Custom notifications
+#notify:
+#  webhooks:
+    # A list of hashes representing hooks. Only the url field is supported.
+#    - url: https://someurl.com/hooks/circle
+
+
+
