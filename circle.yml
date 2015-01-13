@@ -18,11 +18,12 @@ machine:
 
 ## Customize dependencies
 dependencies:
-#  pre:
-  override:
+  pre:
     - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
     - wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
     - sudo apt-get update -qq
+    - echo ${ROS_DISTRO}
+  override:
     - sudo apt-get install -qq -y ros-${ROS_DISTRO}-ros
     - sudo rosdep init
     - rosdep update
@@ -39,6 +40,12 @@ dependencies:
 
 ## Customize test commands
 test:
+  pre:
+    - source /opt/ros/$ROS_DISTRO/setup.bash
+    - export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$CI_SOURCE_PATH
+    - echo $ROS_PACKAGE_PATH
+    - rospack profile 
+    - roscd hull_cleaner
   override:
     - make 
     - make test
