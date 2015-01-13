@@ -9,8 +9,8 @@ machine:
   # Add some environment variables
   environment:
     ROS_DISTRO: hydro
-    CI_SOURCE_PATH=$(pwd)
-    REPOSITORY_NAME=${PWD##*/}
+    CI_SOURCE_PATH: $(pwd)
+    REPOSITORY_NAME: ${PWD##*/}
 
 ## Customize checkout
 #checkout:
