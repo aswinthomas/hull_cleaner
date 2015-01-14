@@ -41,5 +41,5 @@ before_script: # Use this to prepare your build for testing e.g. copy database c
 script: 
   - rosmake hull_cleaner
 #make test
-  - ./bin/test_boustrophedon
+  - $PWD/bin/test_boustrophedon
 
