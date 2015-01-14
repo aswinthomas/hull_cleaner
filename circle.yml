@@ -29,7 +29,7 @@ dependencies:
     - sudo apt-get update -qq
     - echo ${ROS_DISTRO}
   override: 
-    - sudo apt-get install -qq -y ros-${ROS_DISTRO}-ros-desktop
+    - sudo apt-get install -qq -y ros-${ROS_DISTRO}-desktop-full
     - sudo rosdep init
     - rosdep update
 #  post:
