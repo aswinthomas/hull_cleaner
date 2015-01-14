@@ -27,6 +27,7 @@ before_install: # Use this to prepare the system to install prerequisites or dep
   - sudo apt-get install -qq -y ros-$ROS_DISTRO-desktop-full
   - sudo rosdep init
   - rosdep update
+  - sudo svn checkout http://googletest.googlecode.com/svn/trunk/ /usr/src/gtest
 
 #install: # Use this to install any prerequisites or dependencies necessary to run your build
 
@@ -40,6 +41,5 @@ before_script: # Use this to prepare your build for testing e.g. copy database c
 
 script: 
   - rosmake hull_cleaner
-#make test
-  - $PWD/bin/test_boustrophedon
+  - make test
 
