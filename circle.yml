@@ -29,7 +29,7 @@ dependencies:
     - sudo apt-get update -qq
     - echo ${ROS_DISTRO}
   override: 
-    - sudo apt-get install -qq -y ros-${ROS_DISTRO}-ros-base
+    - sudo apt-get install -qq -y ros-${ROS_DISTRO}-ros-base ros-${ROS_DISTRO}-geometry-msgs
     - sudo rosdep init
     - rosdep update
 #  post:
@@ -50,10 +50,10 @@ test:
     
   override:
     - source /opt/ros/$ROS_DISTRO/setup.bash 
-    - rospack profile:
-        environment:
-          ROS_PACKAGE_PATH: /opt/ros/hydro/share:/opt/ros/hydro/stacks:/home/ubuntu
-    - roscd hull_cleaner && make && make test
+#    - rospack profile:
+    - roscd hull_cleaner && make && make test:
+      environment:
+        ROS_PACKAGE_PATH: /opt/ros/hydro/share:/opt/ros/hydro/stacks:/home/ubuntu
 #  post:
 
 
