@@ -50,7 +50,9 @@ test:
     
   override:
     - source /opt/ros/$ROS_DISTRO/setup.bash 
-    - ROS_PACKAGE_PATH: /opt/ros/hydro/share:/opt/ros/hydro/stacks:/home/ubuntu rospack profile && roscd hull_cleaner && make && make test
+    - rospack profile && roscd hull_cleaner && make && make test
+      environment:
+        ROS_PACKAGE_PATH: /opt/ros/hydro/share:/opt/ros/hydro/stacks:/home/ubuntu
 #  post:
 
 
