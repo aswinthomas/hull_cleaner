@@ -20,6 +20,7 @@ machine:
 dependencies:
   pre:
     - sudo rm -r /etc/apt/sources.list.d
+    - sudo mkdir -p /etc/apt/sources.list.d
     - sudo apt-get purge libboost*
     - sudo apt-get install libboost1.46-dev
     - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
