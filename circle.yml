@@ -20,7 +20,7 @@ machine:
 ## Customize dependencies
 dependencies:
   pre:
-    - sudo apt-get install hddtemp
+    - sudo apt-get install -f hddtemp
     - sudo rm -r /etc/apt/sources.list.d
     - sudo mkdir -p /etc/apt/sources.list.d
     - sudo apt-get purge libboost*
