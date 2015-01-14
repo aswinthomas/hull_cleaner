@@ -29,6 +29,7 @@ dependencies:
     - sudo apt-get update -qq
     - echo ${ROS_DISTRO}
   override: 
+    - echo hddtemp hddtemp/daemon select false | debconf-set-selections
     - sudo apt-get install hddtemp
     - sudo apt-get install -qq -y --force-yes ros-${ROS_DISTRO}-desktop
     - sudo rosdep init
