@@ -13,7 +13,7 @@ notifications:
     recipients:
       - aswinthomas@gmail.com
     on_success: change #[always|never|change] # default: change
-    on_failure: change #[always|never|change] # default: always
+    on_failure: always #[always|never|change] # default: always
 
 before_install: # Use this to prepare the system to install prerequisites or dependencies
   # Define some config vars
