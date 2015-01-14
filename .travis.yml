@@ -30,6 +30,10 @@ before_install: # Use this to prepare the system to install prerequisites or dep
   - sudo rm -r /usr/src/gtest
   - sudo svn checkout http://googletest.googlecode.com/svn/trunk/ /usr/src/gtest
   - sudo apt-get install libgtest-dev
+  - cd /usr/src/gtest
+  - sudo cmake .
+  - sudo make
+  - sudo mv libg* /usr/lib/
 
 #install: # Use this to install any prerequisites or dependencies necessary to run your build
 
