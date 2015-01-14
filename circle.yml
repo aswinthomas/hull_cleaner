@@ -9,6 +9,7 @@ machine:
 #  # Add some environment variables
   environment:
     ROS_DISTRO: hydro
+    ROS_PACKAGE_PATH: $PWD
 #    CI_SOURCE_PATH: $(pwd)
 #    REPOSITORY_NAME: ${PWD##*/}
 
@@ -46,8 +47,6 @@ dependencies:
 test:
   pre:
     - source /opt/ros/$ROS_DISTRO/setup.bash
-    - export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$CI_SOURCE_PATH
-    - echo $ROS_PACKAGE_PATH
     - rospack profile 
     - roscd hull_cleaner
     - echo $PWD
