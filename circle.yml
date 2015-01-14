@@ -31,11 +31,11 @@ dependencies:
     - sudo apt-get install -qq -y ros-${ROS_DISTRO}-ros
     - sudo rosdep init
     - rosdep update
-  post:
-    - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 99
-    - sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-3.4 99
-    - gcc --version
-    - clang --version
+#  post:
+#    - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 99
+#    - sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-3.4 99
+#    - gcc --version
+#    - clang --version
 #  cache_directories:
 
 
@@ -50,6 +50,7 @@ test:
     - echo $ROS_PACKAGE_PATH
     - rospack profile 
     - roscd hull_cleaner
+    - echo $PWD
   override:
     - make 
     - make test
