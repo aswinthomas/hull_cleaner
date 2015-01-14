@@ -19,14 +19,14 @@ machine:
 ## Customize dependencies
 dependencies:
   pre:
-    - cd /etc/apt/sources.list.d
-    - sudo rm -r *
+    - sudo rm -r /etc/apt/sources.list.d
+    - sudo apt-get purge libboost*
+    - sudo apt-get install libboost1.46-dev
     - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
     - wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
     - sudo apt-get update -qq
     - echo ${ROS_DISTRO}
   override: 
-    - sudo apt-get install libboost1.46-dev
     - sudo apt-get install -qq -y ros-${ROS_DISTRO}-ros
     - sudo rosdep init
     - rosdep update
