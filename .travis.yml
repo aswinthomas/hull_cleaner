@@ -36,6 +36,7 @@ before_script: # Use this to prepare your build for testing e.g. copy database c
   - echo $ROS_PACKAGE_PATH
   - rospack profile 
   - roscd hull_cleaner
+  - echo $PWD
 
 script: 
   - rosmake hull_cleaner
