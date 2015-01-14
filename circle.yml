@@ -20,9 +20,6 @@ machine:
 ## Customize dependencies
 dependencies:
   pre:
-    - wget http://download.savannah.gnu.org/releases/hddtemp/hddtemp-0.3-beta15.tar.bz2
-    - tar xvjf hddtemp-0.3-beta15.tar.bz2
-    - cd hddtemp-0.3-beta15 && ./configure && make && sudo make install
     - sudo rm -r /etc/apt/sources.list.d
     - sudo mkdir -p /etc/apt/sources.list.d
     - sudo apt-get purge libboost*
@@ -32,7 +29,7 @@ dependencies:
     - sudo apt-get update -qq
     - echo ${ROS_DISTRO}
   override: 
-    - sudo apt-get install -qq -y ros-${ROS_DISTRO}-desktop
+    - sudo apt-get install -qq -y ros-${ROS_DISTRO}-ros-base
     - sudo rosdep init
     - rosdep update
 #  post:
