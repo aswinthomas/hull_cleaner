@@ -9,7 +9,7 @@ machine:
 #  # Add some environment variables
   environment:
     ROS_DISTRO: hydro
-    ROS_PACKAGE_PATH: $PWD
+    ROS_PACKAGE_PATH: /opt/ros/hydro/share:/opt/ros/hydro/stacks:/home/ubuntu
 #    CI_SOURCE_PATH: $(pwd)
 #    REPOSITORY_NAME: ${PWD##*/}
 
@@ -20,6 +20,7 @@ machine:
 ## Customize dependencies
 dependencies:
   pre:
+    - sudo apt-get -y --force-yes -f install hddtemp
     - sudo rm -r /etc/apt/sources.list.d
     - sudo mkdir -p /etc/apt/sources.list.d
     - sudo apt-get purge libboost*
@@ -29,7 +30,6 @@ dependencies:
     - sudo apt-get update -qq
     - echo ${ROS_DISTRO}
   override: 
-    - sudo apt-get -y --force-yes -f install hddtemp
     - sudo apt-get install -qq -y ros-${ROS_DISTRO}-desktop
     - sudo rosdep init
     - rosdep update
@@ -50,7 +50,7 @@ test:
     - echo $ROS_PACKAGE_PATH
     
   override:
-    - source /opt/ros/$ROS_DISTRO/setup.bash && rospack profile && roscd hull_cleaner && make && make test
+    - source /opt/ros/$ROS_DISTRO/setup.bash && ROS_PACKAGE_PATH: $ROS_PACKAGE_PATH:$PWD && rospack profile && roscd hull_cleaner && make && make test
 #  post:
 
 
