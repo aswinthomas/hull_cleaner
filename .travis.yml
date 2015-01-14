@@ -29,6 +29,7 @@ before_install: # Use this to prepare the system to install prerequisites or dep
   - rosdep update
   - sudo rm -r /usr/src/gtest
   - sudo svn checkout http://googletest.googlecode.com/svn/trunk/ /usr/src/gtest
+  - sudo apt-get install libgtest-dev
 
 #install: # Use this to install any prerequisites or dependencies necessary to run your build
 
